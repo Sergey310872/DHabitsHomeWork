@@ -6,24 +6,13 @@ import java.io.*;
 
 public class InputOutputFile {
     public static void serialize(ListStudentsDTO students, String path) throws IOException {
-        FileOutputStream outputStream = null;
-        ObjectOutputStream objectOutputStream = null;
-        try {
+        try (FileOutputStream outputStream = new FileOutputStream(path); ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
             //создаем 2 потока для сериализации объекта и сохранения его в файл
-            outputStream = new FileOutputStream(path);
-            objectOutputStream = new ObjectOutputStream(outputStream);
 
             // сохраняем объект в файл
             objectOutputStream.writeObject(students);
-        } finally {
-            // Закроем потоки в блоке finally
-            if (objectOutputStream != null) {
-                objectOutputStream.close();
-            }
-            if (outputStream != null) {
-                outputStream.close();
-            }
         }
+        // Закроем потоки в блоке finally
     }
 
 

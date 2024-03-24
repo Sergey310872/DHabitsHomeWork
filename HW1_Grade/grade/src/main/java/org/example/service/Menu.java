@@ -9,6 +9,10 @@ public class Menu {
     public  char menuChoice() {
         Scanner scanner = new Scanner(System.in);
         char choice = 'r';
+        System.out.println("""
+                a. Добавьте нового ученика
+                b. Удалите ученикаy
+                """);
         System.out.println("" +
                 "a. Добавьте нового ученика\n" +
                 "b. Удалите ученика\n" +
